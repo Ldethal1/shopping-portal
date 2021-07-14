@@ -3,34 +3,41 @@ pipeline{
     agent any
 
 // uncomment the following lines by removing /* and */ to enable
-    tools{
+	 tools{
        nodejs 'nodejs' 
     }
-    
+
 
     stages{
         stage('build'){
             steps{
+                echo 'this is the first job'
                 sh 'npm install'
+                
             }
         }
         stage('test'){
             steps{
+                echo 'this is the second job'
                 sh 'npm test'
+               
             }
         }
         stage('package'){
             steps{
+                echo 'this is the third job'
                 sh 'npm run package'
+                sleep 7
             }
         }
     }
     
     post{
         always{
-            echo 'this pipeline is for shopping-portal application...'
+            echo 'this pipeline has completed...'
         }
         
     }
     
 }
+{"mode":"full","isActive":false}
